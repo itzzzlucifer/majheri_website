@@ -1,7 +1,7 @@
 function AboutSection() {
   return (
     <div className="about-section">
-        <img src="./src/assets/" alt="" />
+        {/* <img src="/assets/" alt="" /> */}
         <div className="about-info">
         <h1 className="about-title">About Us</h1>
         <p className="about-desc">Dabali Cafe invites you to experience the heart and soul of Nepalese cuisine in the heart of Naxal, Kathmandu. Our journey began with a deep-seated passion for preserving Nepal's culinary traditions, and today, we're proud to offer a taste of our heritage to locals and visitors alike.<br/><br/>

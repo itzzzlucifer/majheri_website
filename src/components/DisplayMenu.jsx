@@ -109,7 +109,7 @@ function DisplayMenu(id) {
     <div className="menu-container">
       {menuItems.map((menuItem) => (
         <div key={menuItem.id} className="menu-item">
-          <img src="./src/assets/react.svg" alt="Menu Image" />
+          <img src="/assets/react.svg" alt="Menu Image" />
           <span>{menuItem.name}</span>
         </div>
       ))}
