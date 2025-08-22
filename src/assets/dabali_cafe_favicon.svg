@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="319"
+   height="319"
+   viewBox="0 0 84.40208 84.402083"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="dabali_cafe_favicon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2"
+     inkscape:cx="128.25"
+     inkscape:cy="177.5"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g8344" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g8344"
+       inkscape:label="Main-logo"
+       transform="translate(-8.7385268e-8,-97.875)">
+      <g
+         id="g8336"
+         inkscape:label="logo-small"
+         transform="translate(8.7385264e-8,-2.7989998)">
+        <rect
+           style="fill:#000a1d;stroke-width:0;stroke-linecap:square"
+           id="rect4449"
+           width="84.402"
+           height="84.402"
+           x="0"
+           y="100.674"
+           ry="13.470385" />
+        <circle
+           style="fill:#e99f29;fill-opacity:1;stroke-width:0;stroke-linecap:square"
+           id="path4503"
+           cx="42.201"
+           cy="142.875"
+           r="42.201" />
+        <path
+           id="rect7919"
+           style="fill:#000a1d;fill-opacity:1;stroke-width:0;stroke-linecap:square"
+           d="m 9.0935018,121.78068 7.0626182,7.1608 -2.937289,2.89698 h 4.668966 4.864303 c 0,0 4.102935,0.91634 5.446696,2.76314 1.343759,1.8468 3.490385,2.11475 4.502567,1.89136 1.012185,-0.22342 2.512986,-0.68508 4.354773,1.08727 v 39.31233 h 10.289811 v -39.31233 c 1.841787,-1.77235 3.342588,-1.31069 4.354773,-1.08727 1.012182,0.22339 3.158808,-0.0446 4.502568,-1.89136 1.34376,-1.8468 5.446696,-2.76314 5.446696,-2.76314 h 4.864302 4.668966 l -2.937288,-2.89698 7.062618,-7.1608 H 66.514286 17.887797 Z" />
+      </g>
+    </g>
+  </g>
+</svg>
