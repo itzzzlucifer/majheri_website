@@ -110,7 +110,7 @@ export const restaurantInfo = {
   tagline: "Where Tradition Meets Taste",
   description:
     "Experience the finest dining with our carefully curated menu featuring authentic flavors and modern culinary techniques. Every dish is prepared with love and the freshest ingredients.",
-  phone: "+977 1234567890",
+  phone: "014500245, 9841309435",
   email: "info@dabalicafe.com",
   address: "Kathmandu, Nepal",
   hours: {

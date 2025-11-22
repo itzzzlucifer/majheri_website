@@ -28,28 +28,28 @@ export default function Footer() {
               {restaurantInfo.description}
             </p>
             <div className="flex space-x-4 pt-2">
-              <a
+              <Link
                 href={restaurantInfo.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-glass-border flex items-center justify-center text-foreground hover:bg-primary hover:text-background transition-all duration-300"
               >
                 <Facebook className="w-5 h-5" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href={restaurantInfo.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-glass-border flex items-center justify-center text-foreground hover:bg-primary hover:text-background transition-all duration-300"
               >
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="w-10 h-10 rounded-full bg-glass-border flex items-center justify-center text-foreground hover:bg-primary hover:text-background transition-all duration-300"
               >
                 <Twitter className="w-5 h-5" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -127,9 +127,22 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-glass-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-foreground-muted text-sm text-center md:text-left">
-            &copy; {currentYear} {restaurantInfo.name}. All rights reserved.
-          </p>
+          <div className="text-center md:text-left">
+            <p className="text-foreground-muted text-sm">
+              &copy; {currentYear} {restaurantInfo.name}. All rights reserved.
+            </p>
+            <p className="text-foreground-muted text-xs mt-1">
+              Created by{" "}
+              <Link
+                href="https://kritimtech.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                Kritim technologies Pvt. Ltd.
+              </Link>
+            </p>
+          </div>
           <div className="flex space-x-6 text-sm text-foreground-muted">
             <Link href="#" className="hover:text-primary transition-colors">
               Privacy Policy

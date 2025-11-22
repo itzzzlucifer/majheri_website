@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { restaurantInfo } from "../lib/data";
 
@@ -12,11 +13,12 @@ export default function HeroSection() {
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url(/assets/dabali_image_1.jpeg)",
-          }}
+        <Image
+          src="/assets/dabali_image_1.jpeg"
+          alt="Hero Background"
+          fill
+          priority
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/70 to-black/90" />
 
