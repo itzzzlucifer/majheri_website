@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Color Palette - Warm Restaurant Theme */
+    --primary: 212 175 55; /* Gold */
+    --primary-dark: 184 148 31;
+    --primary-light: 232 208 144;
+    
+    --secondary: 139 69 19; /* Saddle Brown */
+    --accent: 255 107 53; /* Vibrant Orange */
+    
+    --background: 15 15 15;
+    --background-light: 26 26 26;
+    --foreground: 245 245 245;
+    --foreground-muted: 176 176 176;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-primary {
+    color: rgb(var(--primary));
+  }
+  
+  .bg-primary {
+    background-color: rgb(var(--primary));
+  }
+  
+  .border-primary {
+    border-color: rgb(var(--primary));
+  }
+  
+  .text-accent {
+    color: rgb(var(--accent));
+  }
+  
+  .bg-accent {
+    background-color: rgb(var(--accent));
+  }
+  
+  .text-foreground-muted {
+    color: rgb(var(--foreground-muted));
+  }
+  
+  .bg-background-light {
+    background-color: rgb(var(--background-light));
+  }
+  
+  .bg-background-lighter {
+    background-color: rgb(37 37 37);
+  }
+  
+  .border-glass-border {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glass-card {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-card:hover {
+    background: rgba(26, 26, 26, 0.8);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(212, 175, 55, 0.3);
+  }
+  
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, rgb(var(--primary)) 0%, rgb(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, rgb(var(--primary)) 0%, rgb(var(--accent)) 100%);
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, rgb(var(--primary)) 0%, rgb(var(--accent)) 100%);
+    color: rgb(var(--background));
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: rgb(var(--primary));
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 2px solid rgb(var(--primary));
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-outline:hover {
+    background: rgb(var(--primary));
+    color: rgb(var(--background));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.3);
+  }
+  
+  /* Section padding */
+  .section {
+    padding: 6rem 0;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--background-light));
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgb(var(--primary)) 0%, rgb(var(--accent)) 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgb(var(--accent)) 0%, rgb(var(--primary)) 100%);
+}
+
+/* Selection */
+::selection {
+  background: rgb(var(--primary));
+  color: rgb(var(--background));
+}
+
+::-moz-selection {
+  background: rgb(var(--primary));
+  color: rgb(var(--background));
+}
