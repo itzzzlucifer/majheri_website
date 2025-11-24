@@ -1,49 +1,77 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { restaurantInfo } from '../lib/data';
-import { Calendar, Clock, Users, MapPin, Phone, Mail, CheckCircle } from 'lucide-react';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { restaurantInfo } from "../lib/data";
+import {
+  Calendar,
+  Clock,
+  Users,
+  MapPin,
+  Phone,
+  Mail,
+  CheckCircle,
+} from "lucide-react";
 
 export default function BookingSection() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    date: '',
-    time: '',
-    guests: '2',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    time: "",
+    guests: "2",
+    message: "",
   });
 
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus('submitting');
+    setFormStatus("submitting");
 
-    // Simulate API call
-    setTimeout(() => {
-      setFormStatus('success');
-      // Reset form after success
+    try {
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit booking");
+      }
+
+      setFormStatus("success");
       setTimeout(() => {
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          date: '',
-          time: '',
-          guests: '2',
-          message: '',
+          name: "",
+          email: "",
+          phone: "",
+          date: "",
+          time: "",
+          guests: "2",
+          message: "",
         });
-        setFormStatus('idle');
+        setFormStatus("idle");
       }, 3000);
-    }, 1500);
+    } catch (error) {
+      console.error("Booking error:", error);
+      setFormStatus("error");
+      setTimeout(() => setFormStatus("idle"), 5000);
+    }
   };
 
   return (
@@ -60,7 +88,8 @@ export default function BookingSection() {
             Book Your Table
           </h2>
           <p className="text-foreground-muted text-lg">
-            Reserve your spot for an unforgettable dining experience. For large groups or special events, please contact us directly.
+            Reserve your spot for an unforgettable dining experience. For large
+            groups or special events, please contact us directly.
           </p>
         </div>
 
@@ -81,8 +110,12 @@ export default function BookingSection() {
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-medium text-foreground mb-1">Location</div>
-                    <div className="text-foreground-muted text-sm">{restaurantInfo.address}</div>
+                    <div className="font-medium text-foreground mb-1">
+                      Location
+                    </div>
+                    <div className="text-foreground-muted text-sm">
+                      {restaurantInfo.address}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -90,8 +123,12 @@ export default function BookingSection() {
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-medium text-foreground mb-1">Phone</div>
-                    <div className="text-foreground-muted text-sm">{restaurantInfo.phone}</div>
+                    <div className="font-medium text-foreground mb-1">
+                      Phone
+                    </div>
+                    <div className="text-foreground-muted text-sm">
+                      {restaurantInfo.phone}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -99,8 +136,12 @@ export default function BookingSection() {
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-medium text-foreground mb-1">Email</div>
-                    <div className="text-foreground-muted text-sm">{restaurantInfo.email}</div>
+                    <div className="font-medium text-foreground mb-1">
+                      Email
+                    </div>
+                    <div className="text-foreground-muted text-sm">
+                      {restaurantInfo.email}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -117,11 +158,15 @@ export default function BookingSection() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center pb-3 border-b border-glass-border">
                   <span className="text-foreground-muted">Weekdays</span>
-                  <span className="font-medium">{restaurantInfo.hours.weekdays}</span>
+                  <span className="font-medium">
+                    {restaurantInfo.hours.weekdays}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-foreground-muted">Weekends</span>
-                  <span className="font-medium">{restaurantInfo.hours.weekends}</span>
+                  <span className="font-medium">
+                    {restaurantInfo.hours.weekends}
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -135,10 +180,18 @@ export default function BookingSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="glass-card p-8 md:p-10 rounded-3xl space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="glass-card p-8 md:p-10 rounded-3xl space-y-6"
+            >
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-foreground-muted ml-1">Full Name</label>
+                  <label
+                    htmlFor="name"
+                    className="text-sm font-medium text-foreground-muted ml-1"
+                  >
+                    Full Name
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -151,7 +204,12 @@ export default function BookingSection() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-foreground-muted ml-1">Phone Number</label>
+                  <label
+                    htmlFor="phone"
+                    className="text-sm font-medium text-foreground-muted ml-1"
+                  >
+                    Phone Number
+                  </label>
                   <input
                     type="tel"
                     id="phone"
@@ -166,7 +224,12 @@ export default function BookingSection() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-foreground-muted ml-1">Email Address</label>
+                <label
+                  htmlFor="email"
+                  className="text-sm font-medium text-foreground-muted ml-1"
+                >
+                  Email Address
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -181,7 +244,10 @@ export default function BookingSection() {
 
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="date" className="text-sm font-medium text-foreground-muted ml-1 flex items-center gap-2">
+                  <label
+                    htmlFor="date"
+                    className="text-sm font-medium text-foreground-muted ml-1 flex items-center gap-2"
+                  >
                     <Calendar className="w-4 h-4" /> Date
                   </label>
                   <input
@@ -195,7 +261,10 @@ export default function BookingSection() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="time" className="text-sm font-medium text-foreground-muted ml-1 flex items-center gap-2">
+                  <label
+                    htmlFor="time"
+                    className="text-sm font-medium text-foreground-muted ml-1 flex items-center gap-2"
+                  >
                     <Clock className="w-4 h-4" /> Time
                   </label>
                   <input
@@ -209,7 +278,10 @@ export default function BookingSection() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="guests" className="text-sm font-medium text-foreground-muted ml-1 flex items-center gap-2">
+                  <label
+                    htmlFor="guests"
+                    className="text-sm font-medium text-foreground-muted ml-1 flex items-center gap-2"
+                  >
                     <Users className="w-4 h-4" /> Guests
                   </label>
                   <select
@@ -219,9 +291,13 @@ export default function BookingSection() {
                     onChange={handleChange}
                     className="w-full bg-background-light/50 border border-glass-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none"
                   >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, '8+'].map((num) => (
-                      <option key={num} value={num} className="bg-background-light text-foreground">
-                        {num} {num === 1 ? 'Person' : 'People'}
+                    {[1, 2, 3, 4, 5, 6, 7, 8, "8+"].map((num) => (
+                      <option
+                        key={num}
+                        value={num}
+                        className="bg-background-light text-foreground"
+                      >
+                        {num} {num === 1 ? "Person" : "People"}
                       </option>
                     ))}
                   </select>
@@ -229,7 +305,12 @@ export default function BookingSection() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-foreground-muted ml-1">Special Requests (Optional)</label>
+                <label
+                  htmlFor="message"
+                  className="text-sm font-medium text-foreground-muted ml-1"
+                >
+                  Special Requests (Optional)
+                </label>
                 <textarea
                   id="message"
                   name="message"
@@ -243,14 +324,18 @@ export default function BookingSection() {
 
               <button
                 type="submit"
-                disabled={formStatus === 'submitting' || formStatus === 'success'}
+                disabled={
+                  formStatus === "submitting" || formStatus === "success"
+                }
                 className={`w-full btn-primary py-4 text-lg flex items-center justify-center space-x-2 ${
-                  formStatus === 'success' ? 'bg-green-600 border-green-600' : ''
+                  formStatus === "success"
+                    ? "bg-green-600 border-green-600"
+                    : ""
                 }`}
               >
-                {formStatus === 'submitting' ? (
+                {formStatus === "submitting" ? (
                   <span className="inline-block w-6 h-6 border-2 border-background border-t-transparent rounded-full animate-spin" />
-                ) : formStatus === 'success' ? (
+                ) : formStatus === "success" ? (
                   <>
                     <CheckCircle className="w-6 h-6" />
                     <span>Reservation Confirmed!</span>
@@ -259,14 +344,25 @@ export default function BookingSection() {
                   <span>Confirm Reservation</span>
                 )}
               </button>
-              
-              {formStatus === 'success' && (
-                <motion.p 
+
+              {formStatus === "success" && (
+                <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-green-500 text-center text-sm mt-2"
                 >
                   We've sent a confirmation email to {formData.email}
+                </motion.p>
+              )}
+
+              {formStatus === "error" && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-500 text-center text-sm mt-2"
+                >
+                  ⚠️ Oops! Something went wrong. Please try again or contact us
+                  directly.
                 </motion.p>
               )}
             </form>
