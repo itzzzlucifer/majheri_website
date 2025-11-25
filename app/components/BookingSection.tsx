@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import { restaurantInfo } from "../lib/data";
 import {
   Calendar,
@@ -42,17 +43,37 @@ export default function BookingSection() {
     setFormStatus("submitting");
 
     try {
-      const response = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      // Get EmailJS credentials from environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
-      const data = await response.json();
+      // Format date for better readability
+      const formattedDate = new Date(formData.date).toLocaleDateString(
+        "en-US",
+        {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }
+      );
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to submit booking");
-      }
+      // Prepare email template parameters
+      const templateParams = {
+        to_name: "Dabali Restaurant",
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        date: formattedDate,
+        time: formData.time,
+        guests: formData.guests,
+        message: formData.message || "No special requests",
+        reply_to: formData.email,
+      };
+
+      // Send email via EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
       setFormStatus("success");
       setTimeout(() => {
