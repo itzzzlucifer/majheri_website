@@ -5,7 +5,7 @@ export const menuCategories = [
     dishes: [
       {
         id: 1,
-        image: "/assets/dabali_image_1.jpeg",
+        image: "/assets/dabali_food_1.png",
         name: "Grilled Chicken Skewers",
         description:
           "Tender chicken marinated in aromatic spices, grilled to perfection and served with mint chutney.",
@@ -13,7 +13,7 @@ export const menuCategories = [
       },
       {
         id: 2,
-        image: "/assets/dabali_image_2.jpeg",
+        image: "/assets/dabali_food_2.png",
         name: "Crispy Vegetable Spring Rolls",
         description:
           "Fresh vegetables wrapped in crispy pastry, served with sweet chili sauce.",
@@ -21,7 +21,7 @@ export const menuCategories = [
       },
       {
         id: 3,
-        image: "/assets/dabali_image_3.jpeg",
+        image: "/assets/dabali_food_3.png",
         name: "Paneer Tikka",
         description:
           "Cottage cheese cubes marinated in spices and grilled in tandoor, served with yogurt dip.",
@@ -29,7 +29,7 @@ export const menuCategories = [
       },
       {
         id: 4,
-        image: "/assets/dabali_image_4.jpeg",
+        image: "/assets/dabali_food_4.png",
         name: "Crispy Calamari",
         description:
           "Lightly battered squid rings fried until golden, served with tangy tartar sauce.",
@@ -37,7 +37,7 @@ export const menuCategories = [
       },
       {
         id: 5,
-        image: "/assets/dabali_image_5.jpeg",
+        image: "/assets/dabali_food_5.png",
         name: "Mushroom Bruschetta",
         description:
           "Toasted bread topped with sautéed mushrooms, garlic, and fresh herbs.",

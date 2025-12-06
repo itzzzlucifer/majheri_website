@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { menuCategories } from "../lib/data";
+import Link from "next/link";
 
 export default function MenuSection() {
   const containerVariants = {
@@ -121,9 +122,11 @@ export default function MenuSection() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
+          <Link href="/menu">
           <button className="btn-outline text-lg px-8 py-4">
             View Full Menu
           </button>
+          </Link>
         </motion.div>
       </div>
     </section>
